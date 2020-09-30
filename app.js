@@ -11,27 +11,35 @@ function compMoveSelect() {
 
 function compareMoves(playerMove, compMove) {
     if (playerMove === "r" && compMove === "s" || playerMove === "s" && compMove === "p" || playerMove === "p" && compMove === "r") {
-        return playerScore ++
+        let winner = true
+        return winner 
     } else if (playerMove === "r" && compMove === "p" || playerMove === "s" && compMove === "r" || playerMove === "p" && compMove === "s") {
-        return compScore ++
+        let winner = false
+        return winner
     } 
 }
 
-// function rockPaperScissorsGame(playerScore, compScore) {
-    let playerScore = 0;
-    let compScore = 0;
+function rockPaperScissorsGame() {
+    let playerScore = 0
+    let compScore = 0
     while (playerScore < 3 && compScore < 3) {
-        compareMoves(playerMoveSelect(), compMoveSelect())
-        alert(playerScore + " - " + compScore)
+        let winner = ""
+        winner = compareMoves(playerMoveSelect(), compMoveSelect());
+        if (winner === true) {
+            playerScore ++
+        } else if (winner === false) {
+            compScore ++
+        }
+        alert(playerScore + " - " + compScore);
     }
     if (playerScore === 3) {
         alert(`You have won, ${playerScore} - ${compScore}`); 
     } else if (compScore === 3) {
         alert(`You have lost, ${playerScore} - ${compScore}`);
     }
-// }
+}
 
-// rockPaperScissorsGame(playerScore, compScore)
+rockPaperScissorsGame();
 
 
 
